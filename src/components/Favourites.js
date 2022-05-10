@@ -38,10 +38,12 @@ export class Favourites extends Component {
     };
     let data = JSON.parse(localStorage.getItem("movies-app") || "[]");
     let tempArr = [];
-    data.map((movieObj) => {
+
+    data.forEach( (movieObj) => {
       if (!tempArr.includes(genreids[movieObj.genre_ids[0]])) {
         tempArr.push(genreids[movieObj.genre_ids[0]]);
       }
+      
     });
 
     tempArr.unshift("All genres");
@@ -175,15 +177,15 @@ export class Favourites extends Component {
                     <th></th>
                     <th scope="col">Title</th>
                     <th scope="col">Genre</th>
-                    <th scope="col"><i style ={{cursor:'pointer'}} class="fa-solid fa-sort-up" onClick={this.sortpopularityDesc}></i>Popularity<i style ={{cursor:'pointer'}} onClick={this.sortpopularityasce} class="fa-solid fa-sort-down"></i></th>
-                    <th scope="col"><i style ={{cursor:'pointer'}} onClick={this.sortRatingDesc} class="fa-solid fa-sort-up"></i>Ratings<i class="fa-solid fa-sort-down" onClick={this.sortRatingasce} style ={{cursor:'pointer'}}></i></th>
+                    <th scope="col"><i style ={{cursor:'pointer'}} className="fa-solid fa-sort-up" onClick={this.sortpopularityDesc}></i>Popularity<i style ={{cursor:'pointer'}} onClick={this.sortpopularityasce} className="fa-solid fa-sort-down"></i></th>
+                    <th scope="col"><i style ={{cursor:'pointer'}} onClick={this.sortRatingDesc} className="fa-solid fa-sort-up"></i>Ratings<i className="fa-solid fa-sort-down" onClick={this.sortRatingasce} style ={{cursor:'pointer'}}></i></th>
                     <th></th>
                   </tr>
                 </thead>
                 <tbody>
                   {filterArr.map((movieElem) => (
-                    <tr>
-                      <td>
+                    <tr key={movieElem.title}>
+                      <td key={movieElem.title}>
                         <img
                           style={{ width: "6rem" }}
                           src={`https://image.tmdb.org/t/p/original${movieElem.backdrop_path}`}
@@ -206,27 +208,27 @@ export class Favourites extends Component {
             <nav aria-label="Page navigation example">
               <ul className="pagination">
                 <li className="page-item">
-                  <a className="page-link" href="#">
+                  <a className="page-link" href="/">
                     Previous
                   </a>
                 </li>
                 <li className="page-item">
-                  <a className="page-link" href="#">
+                  <a className="page-link" href="/">
                     1
                   </a>
                 </li>
                 <li className="page-item">
-                  <a className="page-link" href="#">
+                  <a className="page-link" href="/">
                     2
                   </a>
                 </li>
                 <li className="page-item">
-                  <a className="page-link" href="#">
+                  <a className="page-link" href="/">
                     3
                   </a>
                 </li>
                 <li className="page-item">
-                  <a className="page-link" href="#">
+                  <a className="page-link" href="/">
                     Next
                   </a>
                 </li>
