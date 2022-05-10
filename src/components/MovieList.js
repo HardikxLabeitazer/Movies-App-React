@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import axios from 'axios';
 // import { movies } from '../movieData';
 // import { movies } from '../movieData'
+import { Link } from 'react-router-dom';
 export class MovieList extends Component {
   constructor(){
     super();
@@ -92,10 +93,10 @@ export class MovieList extends Component {
                 <div className='button-wrapper' style={{ display: 'flex', justifyContent: 'center' }}>
                   {
                     this.state.hover ===movieEle.id &&
-                     <a href="/" className="btn btn-primary movies-button text-center" onClick={()=>(this.handleFavourites(movieEle))}>
+                     <Link to="/" className="btn btn-primary movies-button text-center" onClick={()=>(this.handleFavourites(movieEle))}>
                        {this.state.favourites.includes(movieEle.id)? "Remove from Favourites":"Add to Favourites"}
                       
-                       </a>
+                       </Link>
                   }
                  
 
@@ -109,14 +110,14 @@ export class MovieList extends Component {
         <div style={{display:'flex',justifyContent:'center'}}>
            <nav aria-label="Page navigation example ">
           <ul className="pagination">
-            <li className="page-item"><a className="page-link" onClick={this.handleprevious} href="/">Previous</a></li>
+            <li className="page-item"><Link className="page-link" onClick={this.handleprevious} to="/">Previous</Link></li>
             {
               this.state.parr.map((value)=>(
-                <li className="page-item"><a className="page-link" onClick={()=>this.handlepageclick(value)} href="/">{value}</a></li>
+                <li className="page-item"><Link className="page-link" onClick={()=>this.handlepageclick(value)} to="/">{value}</Link></li>
               ))
             }
             
-            <li className="page-item"><a className="page-link" onClick={this.handlenext} href="/">Next</a></li>
+            <li className="page-item"><Link className="page-link" onClick={this.handlenext} to="/">Next</Link></li>
           </ul>
         </nav>
         </div>
